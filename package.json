@@ -1,0 +1,22 @@
+{
+  "name": "vue3-admin-server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "log4js": "^6.9.1",
+    "md5": "^2.3.0",
+    "mysql2": "^3.6.2",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "sequelize": "^6.33.0",
+    "svg-captcha": "^1.4.0"
+  }
+}
