@@ -106,9 +106,8 @@ router.get('/captcha', (req, res) => {
  */
 router.post('/login', async (req, res) => {
   const { username, password, captcha } = req.body
-  console.log(captcha,typeof(captcha));
   if (captcha.toLowerCase() !== captcha_text) {
-    res.send({ 
+    res.send({
       code: 400,
       message: '验证码不正确',
     })
@@ -136,7 +135,7 @@ router.post('/login', async (req, res) => {
       message: '密码不正确',
     })
     return
-  } 
+  }
 
   // 生成 token 并返回客户端
   const payload = { userId: user.id + 123123 }
@@ -159,10 +158,27 @@ router.post('/login', async (req, res) => {
         user: {
           id: user.id,
           username: user.username,
-        }
+        },
       },
     })
   })
 })
+
+/**
+ * 获取当前用户信息
+ * @api {get} /api/user/current 获取当前用户信息
+ * @apiHeader {String} Authorization Bearer token
+ */
+router.get(
+  '/current',
+  // passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.send({
+      code: 200,
+      message: '获取当前用户信息成功',
+      data: req.user,
+    })
+  },
+)
 
 module.exports = router
