@@ -171,12 +171,12 @@ router.post('/login', async (req, res) => {
  */
 router.get(
   '/current',
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     res.send({
       code: 200,
       message: '获取当前用户信息成功',
-      data: req.user,
+      username: req.user.username,
     })
   },
 )
